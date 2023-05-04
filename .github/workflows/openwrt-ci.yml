@@ -72,6 +72,8 @@ jobs:
           # ===============================================================
           # 
           cat ./config/config_brb50 > .config
+          sed -i '.bak' 's/CONFIG_DEFAULT_dnsmasq=y/CONFIG_DEFAULT_dnsmasq-full=y/g' .config
+          sed -i '.bak' 's/CONFIG_PACKAGE_dnsmasq=y/# CONFIG_PACKAGE_dnsmasq is not set/g' .config
           cat .config
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
